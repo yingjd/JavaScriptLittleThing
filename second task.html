@@ -1,0 +1,268 @@
+<p id="p1">Problem 1: Write a function called roll that returns a random value from [1, 2, 3, 4, 5, 6], with equal (uniform) probability. Run this function 10 times and display the results in the p tag for this problem. The function join on an array may be useful when displaying results. 
+<script>
+function roll() {
+  return Math.floor((Math.random() * 6) + 1);
+}
+// first way to call the function 10 times; 
+var outPut=[roll(), roll(), roll(),roll(), roll(), roll(),roll(), roll(), roll(), roll()];
+// using a for loop to call 10 times; 
+var count = 10; 
+var outPut2 = new Array();
+for(var i = 0; i < count; i++){
+	outPut2[i]=roll();
+}
+document.getElementById("p1").innerHTML=outPut2;
+
+</script>
+</p>
+Result: [2, 4, 3, 6, 2, 2, 5, 2, 5, 3]
+
+
+
+
+
+<p id="p2">Problem 2: Write a function called diceFactory that takes one argument, an array called values, and returns a function. This returned function should work the same way as your roll() function, but return a uniform sample from the values array rather than digits from 1-6. Create a function lunch by
+calling diceFactory(["pizza", "burrito", "sushi"]). Run the lunch function 10 times and display the results in the p tag for this problem.
+<script>
+var diceFactory = function(values){
+	return function(){
+		var element = Math.floor((Math.random()* values.length));
+			return values[element];
+	}
+}
+var count = 10; 
+var lunch = diceFactory(["pizza", "burrito", "sushi"]);
+var outPut3 = new Array();
+for(var i = 0; i < count; i++){
+	outPut3[i]=lunch();
+}
+document.getElementById("p2").innerHTML=outPut3;
+</script>
+</p>
+Result:  ["sushi", "pizza", "sushi", "sushi", "burrito", "pizza", "pizza", "pizza", "sushi", "sushi"]
+
+
+
+
+<p id="p3">Problem 3: I recently got some fun conference swag: Bradley Efron's non-transitive dice. These are four six-sided dice that have the following face values:
+     green:[1, 1, 1, 5, 5, 5] 
+     blue:[0, 0, 4, 4, 4, 4] 
+     yellow:[3, 3, 3, 3, 3, 3]
+	 orange:[2, 2, 2, 2, 6, 6]
+We'll call these [green, blue, yellow, and orange] (visit my office to see why). Write a new dice-rolling function generator function called nonTransitiveFactory that returns a function that simulates one of these dice. The generator function should take one argument, a number from {0, 1, 2, 3}, that specifies which die to return. Use the generator function to create a dice-rolling function greenDie that samples from the green array. Use a for loop to run this function 10 times and display the results in the p tag for this problem.
+<script>
+var dices = [[1, 1, 1, 5, 5, 5], [0, 0, 4, 4, 4, 4], [3, 3, 3, 3, 3, 3], [2, 2, 2, 2, 6, 6]]
+var nonTransitiveFactory = function(number){
+	return function(){
+		var diceLenght = dices[number].length; 
+		var element = Math.floor((Math.random() * diceLenght));
+			return dices[number][element];
+	}
+} 
+var count = 10; 
+var outPut4 = new Array();
+var greenDie = nonTransitiveFactory(0);
+for(var i = 0; i < count; i++){
+	outPut4[i] = greenDie();
+	
+	}
+document.getElementById("p3").innerHTML=outPut4;
+
+</script>
+</p>
+Result: [1, 5, 1, 5, 5, 5, 1, 5, 1, 5]
+
+
+
+
+
+<p id="p4">Problem 4: Write a function called rollNTimes that takes three arguments, two dice-rolling functions (i.e. functions returned by your nonTransitiveFactory function) and a number n. 
+	It should "roll" the two dice n times and return the number of times the first function returned a value greater than the second function (ties don't count). Run this function 10 times with green and blue with n=100, and display the results in the p tag for this problem.
+<script>
+var outPut5 = new Array();
+var blueDie = nonTransitiveFactory(1);
+for(var i = 0; i < count; i++){
+	outPut5[i] = blueDie();
+}
+
+
+function rollNTimes(function1, function2, number){
+	var times = 0; 
+	for (var i = 1; i < number; i++){
+		if(function1() - function2() > 0){
+			var difference = function1() - function2();
+			times++;
+		}
+
+	}
+	return times;  
+	}
+
+var count = 10; 
+var outPut6 = new Array();
+for(var i = 0; i < count; i++){
+	outPut6[i] = rollNTimes(nonTransitiveFactory(0), nonTransitiveFactory(1),100);
+}
+
+document.getElementById("p4").innerHTML=outPut6;
+
+</script>
+</p> 
+Result: [69, 68, 66, 60, 71, 71, 57, 71, 62, 63]
+
+
+
+<p id="p5">Problem 5: Now create a 4x4 table where each cell has a distinct id attribute (you can write it out explicitly or generate it automatically). Set the background color for each cell to be the color associated with the row of the table. For each possible pair of dice i, j, use the innerText property to set the value in the appropriate table cell to the result you get by calling rollNTimes with the appropriate functions, and with n=1000. It's ok to compare a die to itself and to display both symmetrical pairs. In the p tag for this problem describe why these are called non-transitive dice.
+<script>
+
+var outPut7 = new Array();
+var outPut8 = new Array();
+var outPut9 = new Array();
+var outPut10 = new Array();
+var outPut11 = new Array();
+var outPut12 = new Array();
+var outPut13 = new Array();
+var outPut14 = new Array();
+var outPut15 = new Array();
+var outPut16 = new Array();
+var outPut17 = new Array();
+var outPut18 = new Array();
+var outPut19 = new Array();
+var outPut20 = new Array();
+var outPut21 = new Array();
+var outPut22 = new Array();
+
+
+var count = 1;
+for(var i = 0; i < count; i++){
+	outPut7[i] = rollNTimes(nonTransitiveFactory(0), nonTransitiveFactory(1),1000);
+}
+
+var outPut8 = new Array();
+for(var i = 0; i < count; i++){
+	outPut8[i] = rollNTimes(nonTransitiveFactory(0), nonTransitiveFactory(2),1000);
+}
+
+var outPut9 = new Array();
+for(var i = 0; i < count; i++){
+	outPut9[i] = rollNTimes(nonTransitiveFactory(0), nonTransitiveFactory(3),1000);
+}
+
+
+var outPut10 = new Array();
+for(var i = 0; i < count; i++){
+	outPut10[i] = rollNTimes(nonTransitiveFactory(1), nonTransitiveFactory(2),1000);
+}
+
+
+var outPut11 = new Array();
+for(var i = 0; i < count; i++){
+	outPut11[i] = rollNTimes(nonTransitiveFactory(1), nonTransitiveFactory(3),1000);
+}
+
+
+var outPut12 = new Array();
+for(var i = 0; i < count; i++){
+	outPut12[i] = rollNTimes(nonTransitiveFactory(2), nonTransitiveFactory(3),1000);
+}
+
+var outPut13 = new Array();
+for(var i = 0; i < count; i++){
+	outPut13[i] = rollNTimes(nonTransitiveFactory(0), nonTransitiveFactory(0),1000);
+}
+
+var outPut14 = new Array();
+for(var i = 0; i < count; i++){
+	outPut14[i] = rollNTimes(nonTransitiveFactory(1), nonTransitiveFactory(1),1000);
+}
+
+var outPut15 = new Array();
+for(var i = 0; i < count; i++){
+	outPut15[i] = rollNTimes(nonTransitiveFactory(2), nonTransitiveFactory(2),1000);
+}
+
+
+var outPut16 = new Array();
+for(var i = 0; i < count; i++){
+	outPut16[i] = rollNTimes(nonTransitiveFactory(3), nonTransitiveFactory(3),1000);
+}
+
+
+var outPut17 = new Array();
+for(var i = 0; i < count; i++){
+	outPut17[i] = rollNTimes(nonTransitiveFactory(1), nonTransitiveFactory(0),1000);
+}
+
+var outPut18 = new Array();
+for(var i = 0; i < count; i++){
+	outPut18[i] = rollNTimes(nonTransitiveFactory(2), nonTransitiveFactory(0),1000);
+}
+
+var outPut19 = new Array();
+for(var i = 0; i < count; i++){
+	outPut19[i] = rollNTimes(nonTransitiveFactory(3), nonTransitiveFactory(0),1000);
+}
+
+
+var outPut20 = new Array();
+for(var i = 0; i < count; i++){
+	outPut20[i] = rollNTimes(nonTransitiveFactory(2), nonTransitiveFactory(1),1000);
+}
+
+
+var outPut21 = new Array();
+for(var i = 0; i < count; i++){
+	outPut21[i] = rollNTimes(nonTransitiveFactory(3), nonTransitiveFactory(1),1000);
+}
+
+
+var outPut22 = new Array();
+for(var i = 0; i < count; i++){
+	outPut22[i] = rollNTimes(nonTransitiveFactory(3), nonTransitiveFactory(2),1000);
+}
+
+
+
+//document.getElementById("p5").innerHTML=outPut7;
+//document.getElementById("p5").innerHTML=outPut8;
+
+
+var diceResult = ["1","2","3","4"];
+  for(i=0;i<dices.length;i++)
+   for(j=0;j<dices.length;j++)
+     document.getElementById("x"+diceResult[i]+"y"+diceResult[j]).innerText=rollNTimes(nonTransitiveFactory(i),nonTransitiveFactory(j),1000);
+</script>
+
+<table id = "DiceDisplay">
+    <tr id = "FirstRow" style="background-color:#008000;">
+        <td id = "1"></td>
+        <td id = "2"></td>
+        <td id = "3"></td>
+        <td id = "4"></td>
+    </tr>
+    <tr id = "SecondRow" style="background-color:#0000FF;">
+        <td id = "1"></td>
+        <td id = "2"></td>
+        <td id = "3"></td>
+        <td id = "4"></td>
+    </tr>
+    <tr id = "ThirdRow" style="background-color:#FFD700;">
+        <td id = "1"></td>
+        <td id = "2"></td>
+        <td id = "3"></td>
+        <td id = "4"></td>
+    </tr>
+    <tr id = "ForthRow" style="background-color:#FF8C00;">
+        <td id = "1"></td>
+        <td id = "2"></td>
+        <td id = "3"></td>
+        <td id = "4"></td>
+    </tr>
+</table> 
+</p>
+
+Result[663,485,344,668,472,680,237,209,0,225,336,502,654,337,553,317]
+
+
+
+
